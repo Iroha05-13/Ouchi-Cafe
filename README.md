@@ -19,8 +19,10 @@
 
 
 ## 設計書
-- 実装機能リスト
-    https://docs.google.com/spreadsheets/d/1RgZkxYo1fYVrQEJIbaboesusRXmcbWhHWLWVs93ygmM/edit?usp=sharing
+- 実装機能リスト    https://docs.google.com/spreadsheets/d/1RgZkxYo1fYVrQEJIbaboesusRXmcbWhHWLWVs93ygmM/edit?usp=sharing
+- ER図              https://drive.google.com/file/d/1HerHlmEsge36uSkcwvBMlJNugGIdalBH/view?usp=sharing
+- テーブル定義書    https://docs.google.com/spreadsheets/d/1iPgjxge-jVxL4k6cb2GVZjK7AAQviwYLtKduV-Eu0JE/edit?usp=sharing
+- 詳細設計          https://docs.google.com/spreadsheets/d/1Dm3FXaeUB_YgAYoBanSFR6rybiirdv6D/edit?usp=sharing&ouid=107334498158482788220&rtpof=true&sd=true
 
 ## 開発環境
 - OS：Linux(CentOS)
