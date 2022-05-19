@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :shop do
+    get 'shops/show'
+    get 'shops/edit'
+  end
   scope module: :public do
     root to: "homes#top"
     get '/about' => "homes#about", as: "about"

@@ -6,7 +6,7 @@ class Shop < ApplicationRecord
 
   has_many :items, dependent: :destroy
 
-  has_one_attched :shop_image
+  has_one_attached :shop_image
 
   def get_shop_image(width, height)
     unless shop_image.attached?
