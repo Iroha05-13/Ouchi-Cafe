@@ -1,2 +1,30 @@
-<h1>Shop::Shops#edit</h1>
-<p>Find me in app/views/shop/shops/edit.html.erb</p>
+<%= form_with model: @shop do |f| %>
+  <div class="field">
+    <%= f.label :shop_image, "店舗の写真" %><br>
+    <%= f.file_field :shop_image, accept: "image/*" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name, "店舗名" %><br>
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postal_code, "郵便番号(ハイフンあり)" %><br>
+    <%= f.text_field :postal_code, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address, "住所" %><br>
+    <%= f.text_field :address, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, "Eメールアドレス" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.submit "変更を保存" %>
+  </div>
+<% end %>
