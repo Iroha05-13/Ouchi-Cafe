@@ -1,4 +1,6 @@
-<%= form_with model: @item, local: true do |f| %>
+<h2>商品登録</h2>
+
+<%= form_with model: @item, url: shop_items_path, method: :post, local: true do |f| %>
   <div class="form-group">
     <%= f.label :item_image, "商品画像" %>
     <%= f.file_field :item_image, accept: "image/*" %>
