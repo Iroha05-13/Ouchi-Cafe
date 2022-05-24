@@ -1,3 +1,30 @@
-<%= form_with model: @item do |f| %>
-  <div class=""></div>
+<%= form_with model: @item, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :item_image, "商品画像" %>
+    <%= f.file_field :item_image, accept: "image/*" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, "商品名" %>
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :introduction, "商品説明" %>
+    <%= f.text_area :introduction, autofocus: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, "販売価格(税抜)" %>
+    <%= f.text_field :price, autofocus: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :is_active, "販売ステータス" %>
+    <div class="radio_button">
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :is_active, "販売中" ,value: true %>
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :is_active, "販売停止中", value: false %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.submit "新規登録" %>
+  </div>
 <% end %>

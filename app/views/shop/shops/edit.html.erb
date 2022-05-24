@@ -1,30 +1,32 @@
-<%= form_with model: @shop do |f| %>
-  <div class="field">
+<h2>店舗情報編集</h2>
+
+<%= form_with model: @shop, local: true do |f| %>
+  <div class="form-group">
     <%= f.label :shop_image, "店舗の写真" %><br>
     <%= f.file_field :shop_image, accept: "image/*" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name, "店舗名" %><br>
     <%= f.text_field :name, autofocus: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :postal_code, "郵便番号(ハイフンあり)" %><br>
     <%= f.text_field :postal_code, autofocus: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :address, "住所" %><br>
     <%= f.text_field :address, autofocus: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email, "Eメールアドレス" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.submit "変更を保存" %>
   </div>
 <% end %>
