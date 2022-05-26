@@ -10,4 +10,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
+  def name
+    last_name + "　" + first_name
+  end
+
 end

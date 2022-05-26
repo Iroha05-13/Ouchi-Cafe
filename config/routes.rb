@@ -5,10 +5,6 @@ Rails.application.routes.draw do
     sessions: "shop/sessions"
   }
 
-  devise_for :users, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: "public/sessions"
-  }
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -47,6 +43,11 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:new, :create, :destroy]
     end
   end
+
+  devise_for :users, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: "public/sessions"
+  }
 
   scope module: :shop do
     get 'shop_user/:id' => 'shops#show', as: 'show_shop'
