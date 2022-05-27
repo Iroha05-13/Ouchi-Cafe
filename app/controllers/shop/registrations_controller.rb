@@ -38,6 +38,10 @@ class Shop::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def after_sign_up_path_for(resource)
+    show_shop_path(@shop.id)
+  end
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
