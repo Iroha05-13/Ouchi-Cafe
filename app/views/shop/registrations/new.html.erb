@@ -9,18 +9,22 @@
   </div>
 
   <div class="field">
-    <%= f.label :name, "店舗名" %><br>
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.text_field :name, autofocus: true, placeholder: "店舗名" %>
   </div>
 
   <div class="field">
-    <%= f.label :postal_code, "郵便番号(ハイフンあり)" %><br>
-    <%= f.text_field :postal_code, autofocus: true %>
+    <%= f.label :postal_code, "〒" %>
+    <%= f.text_field :postal_code, autofocus: true, placeholder: "000-0000" %>
   </div>
 
   <div class="field">
-    <%= f.label :address, "住所" %><br>
-    <%= f.text_field :address, autofocus: true %>
+    <%= f.label :address, "住所" %>
+    <%= f.text_field :address, autofocus: true, placeholder: "〇〇県××市～" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone_number, "電話番号" %>
+    <%= f.text_field :telephone_number, autofocus: true, placeholder: "ハイフンなし" %>
   </div>
 
   <div class="field">
