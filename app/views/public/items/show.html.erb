@@ -1,2 +1,14 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div>
+  <%= link_to shop_path(@item.shop.id) do %>
+    <span><%= @item.shop.name %></span>
+  <% end %>
+</div>
+
+<div>
+  <%= image_tag @item.get_item_image(500,300) %>
+</div>
+
+<div>
+  <h3><%= @item.name %></h3>
+  <h3>￥<%= @item.with_tax %></h3>
+</div>

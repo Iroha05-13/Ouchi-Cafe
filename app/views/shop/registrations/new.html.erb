@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>ショップの新規登録</h2>
 
 <%= form_with model: @shop, url: shop_registration_path, id: 'new_shop', class: 'new_shop' do |f| %>
   <%= render "shop/shared/error_messages", resource: resource %>
@@ -6,11 +6,11 @@
   <div class="field">
     <%= f.label :shop_image, "店舗の写真" %><br>
     <%= f.file_field :shop_image, accept: "image/*" %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= f.text_field :name, autofocus: true, placeholder: "店舗名" %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= f.label :postal_code, "〒" %>
@@ -25,7 +25,7 @@
   <div class="field">
     <%= f.label :telephone_number, "電話番号" %>
     <%= f.text_field :telephone_number, autofocus: true, placeholder: "ハイフンなし" %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= f.label :email, "Eメールアドレス" %><br />
@@ -46,8 +46,8 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "登録する" %>
   </div>
 <% end %>
 
-<%= render "shop/shared/links" %>
+<p>ショップのログインは<%= render "shop/shared/links" %>から</p>

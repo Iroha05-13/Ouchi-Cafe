@@ -32,7 +32,7 @@
                     <%= link_to 'ケーキを探す', items_path, class: 'nav-link text-dark' %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
+                    <%= link_to 'マイページ', users_path(current_user), class: 'nav-link text-dark' %>
                   </li>
                   <li class="nav-item">
                     <%= link_to 'カート', cart_items_path, class: 'nav-link text-dark' %>
@@ -42,7 +42,7 @@
                   </li>
                 <% elsif shop_signed_in? %>
                   <li>
-                    <%= link_to "マイページ", show_shop_path(shop.id), class: 'nav-link text-dark' %>
+                    <%= link_to "マイページ", show_shop_path(current_shop), class: 'nav-link text-dark' %>
                   </li>
                   <li>
                     <%= link_to "アイテム管理", shop_items_path, class: 'nav-link text-dark' %>
