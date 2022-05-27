@@ -1,2 +1,10 @@
-<h1>Public::Shops#index</h1>
-<p>Find me in app/views/public/shops/index.html.erb</p>
+<h2>ショップ一覧</h2>
+
+<% @shops.each do |shop| %>
+  <div>
+    <%= link_to shop_path(shop.id) do %>
+      <%= image_tag shop.get_shop_image(200,150) %>
+      <p class="mt-2 mb-5"><%= shop.name %></p>
+    <% end %>
+  </div>
+<% end %>

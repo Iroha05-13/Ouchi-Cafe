@@ -1,2 +1,8 @@
-<h1>Public::Users#unsubscribe</h1>
-<p>Find me in app/views/public/users/unsubscribe.html.erb</p>
+<p>
+  <strong>本当に退会しますか？</strong><br>
+  退会すると商品の購入や注文履歴へのアクセスが出来なくなります。<br>
+  当サイトを利用するには、再度ご登録が必要となります。
+</p>
+
+<%= link_to "OK", withdrawal_path, method: :patch, "data-confirm" => "退会します。よろしいですか？" %>
+<%= link_to "キャンセル", users_path %>
