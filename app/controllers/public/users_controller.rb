@@ -11,8 +11,8 @@ class Public::UsersController < ApplicationController
   end
 
   def withdrawal
-    @user = current_user
-    @user.update(is_active: false)
+    user = current_user
+    user.update(is_active: false)
     reset_session
     redirect_to root_path
   end
@@ -20,7 +20,7 @@ class Public::UsersController < ApplicationController
   def update
     user = current_user
     if user.update(user_params)
-      redirect_to users_path(user.id)
+      redirect_to users_path
     else
       render :edit
     end

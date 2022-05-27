@@ -6,19 +6,28 @@
     <th>名前</th>
     <th>住所</th>
     <th>メールアドレス</th>
+    <th>会員ステータス</th>
   </tr>
 
   <% @users.each do |user| %>
     <tr>
       <td><%= user.id %></td>
       <td>
-        <%= link_to user.name, admin_user_path(user.id) %>
+        <%= link_to user.name, admin_user_path(user.id) %><br>
+        (<%= user.name_kana %>)
       </td>
       <td>
         〒<%= user.postal_code %><br>
         <%= user.address %>
       </td>
       <td><%= user.email %></td>
+      <td>
+        <% if user.is_active == true %>
+          <p class="text-success">有効</p>
+        <% else %>
+          <p>退会</p>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

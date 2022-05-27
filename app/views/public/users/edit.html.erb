@@ -1,6 +1,6 @@
 <h2>会員情報編集</h2>
 
-<%= form_with model: @user, url: users_path do |f| %>
+<%= form_with model: @user, url: users_path, method: :patch, local: true do |f| %>
 
   <div class="field">
     <label>お名前</label><br>
@@ -9,28 +9,28 @@
   </div>
   <br>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.text_field :last_name_kana, autofocus: true, placeholder: "セイ" %> <i>　</i>
     <%= f.text_field :first_name_kana, autofocus: true, placeholder: "メイ" %>
   </div>
   <br>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :postal_code, "〒" %>
     <%= f.text_field :postal_code, autofocus: true, placeholder: "000-0000" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :address, "ご住所" %>
-    <%= f.text_field :address, autofocus: true, placeholder: "〇〇県××市～" %>
+    <%= f.text_field :address, autofocus: true, placeholder: "〇〇県××市～", :size => "45" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :telephone_number, "お電話番号" %>
     <%= f.text_field :telephone_number, autofocus: true, placeholder: "ハイフンなし" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email, "Eメールアドレス" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
