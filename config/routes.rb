@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     get '/about' => "homes#about", as: "about"
 
     delete 'cart_items/destroy_all', as: 'destroy_all'
-    resources :cart_items, except: [:show, :new]
+    resources :cart_items, except: [:show, :new, :edit]
 
     resources :shops, only: [:index, :show]
 

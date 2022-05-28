@@ -11,7 +11,7 @@
     </div>
     <div>
       <%= link_to shop_path(item.shop.id) do %>
-        <%= image_tag item.shop.get_shop_image(48,36) %>
+        <%= image_tag item.shop.get_shop_image(48,50), class: "rounded-circle"; %>
         <%= item.shop.name %>
       <% end %>
     </div>
