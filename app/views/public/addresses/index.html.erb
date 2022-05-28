@@ -1,2 +1,53 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
+<h2>配送先一覧</h2>
+
+<p><%= flash[:notice] %></p>
+
+<div>
+  <div>
+    <%= form_with model: @address, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :postal_code, "〒" %>
+        <%= f.text_field :postal_code, autofocus: true, placeholder: "000-0000" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :address, "住所" %>
+        <%= f.text_field :address, autofocus: true, placeholder: "〇〇県××市～", :size => "45" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :name, "宛先" %>
+        <%= f.text_field :name, autofocus: true %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "登録", class: "btn btn-outline-secondary btn-sm" %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <table class="table table-sm">
+      <tr>
+        <th>住所</th>
+        <th>宛名</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% if @addresses.present? %>
+        <% @addresses.each do |address| %>
+          <tr>
+            <td>
+              〒<%= address.postal_code %><br>
+              <%= address.address %>
+            </td>
+            <td><%= address.name %></td>
+            <td><%= link_to "編集", edit_address_path(address.id), class: "btn btn-outline-secondary btn-sm" %></td>
+            <td><%= link_to "削除", address_path(address.id), method: :delete, class: "btn btn-outline-secondary btn-sm", "data-confirm" => "登録した住所が削除されます。よろしいですか？" %></td>
+          </tr>
+        <% end %>
+      <% else %>
+      <tr>
+        <td colspan="4">登録されている配送先はありません</td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

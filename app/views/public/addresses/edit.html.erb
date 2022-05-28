@@ -1,2 +1,22 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
+<h2>配送先編集</h2>
+
+<div>
+  <%= form_with model: @address, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :postal_code, "〒" %>
+      <%= f.text_field :postal_code, autofocus: true, placeholder: "000-0000" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address, "住所" %>
+      <%= f.text_field :address, autofocus: true, placeholder: "〇〇県××市～", :size => "45" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :name, "宛先" %>
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "保存", class: "btn btn-outline-secondary btn-sm" %>
+    </div>
+  <% end %>
+</div>

@@ -18,6 +18,9 @@
           <a class="navbar-brand m-0" href="/">
             <%= image_tag 'top_logo.png', :size => "245x80" %>
           </a>
+          <% if user_signed_in? %>
+            <p class="text-secondary mt-5 ml-2">ようこそ、<%= current_user.name %>さん</p>
+          <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
