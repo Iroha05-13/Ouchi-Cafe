@@ -1,23 +1,22 @@
 <h2><%= current_user.name %>さんのショッピングカート</h2>
 <p><%= flash[:notice] %></p>
 
-<% if @cart_items.any? %>
-    <div>
-        <%= link_to "カートを空にする", destroy_all_path, method: :delete, "data-confirm" => "カートの中身が全て削除されます。よろしいですか？", class: "btn btn-outline-secondary" %>
+<% if @cart_items.present? %>
+    <div class="text-right">
+        <%= link_to "カートを空にする", destroy_all_path, method: :delete, "data-confirm" => "カートの中身が全て削除されます。よろしいですか？", class: "btn-sm btn-outline-secondary" %>
     </div><br>
 
     <table class="table table-sm">
         <tr>
-            <th></th>
-            <th>商品名</th>
+            <th colspan="2">商品名</th>
             <th>単価(税込)</th>
             <th>数量</th>
             <th>小計</th>
             <th></th>
         </tr>
-        <%= @cart_items.each do |cart_item| %>
+        <% @cart_items.each do |cart_item| %>
             <tr>
-                <td><%= image_tag cart_item.item.get_item_image(60,36) %></td>
+                <td><%= image_tag cart_item.item.get_item_image(75,45) %></td>
                 <td><%= cart_item.item.name %></td>
                 <td><%= cart_item.item.with_tax %></td>
                 <td>
@@ -26,10 +25,28 @@
                         <%= f.submit "変更", class: "btn-outline-secondary btn-sm" %>
                     <% end %>
                 </td>
-                <td><%= cart_item.subtotal %></td>
+                <td>￥<%= cart_item.subtotal %></td>
                 <td><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "商品がカートから削除されます。よろしいですか？", class: "btn-outline-secondary btn-sm" %></td>
             </tr>
+            <% @total += cart_item.subtotal %>
         <% end %>
     </table>
+
+    <div>
+        <%= link_to "買い物を続ける", items_path, class: "btn-outline-secondary btn-sm" %>
+    </div>
+    <div class="text-right">
+        <table class="table table-sm">
+            <tr>
+                <td>合計金額</td>
+                <td>￥<%= @total %></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <%= link_to "購入する", new_order_path, class: "btn-sm btn-outline-secondary" %>
+    </div>
 <% else %>
+    <p>カートに商品がありません</p>
+    <%= link_to "商品を探す", items_path, class: "btn-sm btn-outline-secondary" %>
 <% end %>
