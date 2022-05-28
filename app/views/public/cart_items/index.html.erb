@@ -22,11 +22,11 @@
                 <td>
                     <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch, local: true do |f| %>
                         <%= f.select :amount, *[1..10],{selected: cart_item.amount} %>
-                        <%= f.submit "変更", class: "btn-outline-secondary btn-sm" %>
+                        <%= f.submit "変更", class: "btn btn-outline-secondary btn-sm" %>
                     <% end %>
                 </td>
                 <td>￥<%= cart_item.subtotal %></td>
-                <td><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "商品がカートから削除されます。よろしいですか？", class: "btn-outline-secondary btn-sm" %></td>
+                <td><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "商品がカートから削除されます。よろしいですか？", class: "btn btn-outline-secondary btn-sm" %></td>
             </tr>
             <% @total += cart_item.subtotal %>
         <% end %>

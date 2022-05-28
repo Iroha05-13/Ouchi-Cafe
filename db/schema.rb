@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_27_025445) do
+ActiveRecord::Schema.define(version: 2022_05_28_155709) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -92,15 +92,15 @@ ActiveRecord::Schema.define(version: 2022_05_27_025445) do
     t.index ["shop_id"], name: "index_items_on_shop_id"
   end
 
-  create_table "order_detals", force: :cascade do |t|
+  create_table "order_details", force: :cascade do |t|
     t.integer "price", null: false
     t.integer "amount", null: false
     t.integer "item_id", null: false
     t.integer "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_order_detals_on_item_id"
-    t.index ["order_id"], name: "index_order_detals_on_order_id"
+    t.index ["item_id"], name: "index_order_details_on_item_id"
+    t.index ["order_id"], name: "index_order_details_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -171,8 +171,8 @@ ActiveRecord::Schema.define(version: 2022_05_27_025445) do
   add_foreign_key "favorites", "items"
   add_foreign_key "favorites", "users"
   add_foreign_key "items", "shops"
-  add_foreign_key "order_detals", "items"
-  add_foreign_key "order_detals", "orders"
+  add_foreign_key "order_details", "items"
+  add_foreign_key "order_details", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "post_comments", "items"
   add_foreign_key "post_comments", "users"
