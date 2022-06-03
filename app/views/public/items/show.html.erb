@@ -25,3 +25,32 @@
     <% end %>
   <% end %>
 </div>
+
+<div>
+  <% if @item.favorited_by?(current_user) %>
+    <h1><%= link_to "♥", item_favorites_path(@item), method: :delete %></h1>
+  <% else %>
+    <h1><%= link_to "♡", item_favorites_path(@item), method: :post %></h1>
+  <% end %>
+
+  <p><%= link_to "商品のレビューを書く", new_item_post_comment_path(@item) %></p>
+</div>
+
+<div id="star">
+  <% @post_comments.each do |post_comment| %>
+    <p>投稿者:<%= post_comment.name %></p>
+    <p>評価:<%= post_comment.rate %>点</p>
+    <script>
+      $('#star<%= post_comment.id%>').raty({
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        scoreName: 'post_comment[rate]',
+        half: false,
+        readOnly: true,
+        score: <%= post_comment.star %>,
+      });
+    </script>
+    <p><%= post_comment.comment %></p>
+  <% end %>
+</div>

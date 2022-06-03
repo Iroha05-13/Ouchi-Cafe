@@ -1,2 +1,9 @@
-<h1>Public::Favorites#index</h1>
-<p>Find me in app/views/public/favorites/index.html.erb</p>
+<h2>お気に入りの商品</h2>
+
+<% if @favorites.present? %>
+  <% @favorites.each do |favorite| %>
+    <%= render "public/items/item", item: favorite.item %>
+  <% end %>
+<% else %>
+  <p>お気に入りされた商品がありません</p>
+<% end %>

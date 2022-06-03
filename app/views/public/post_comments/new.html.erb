@@ -1,2 +1,32 @@
-<h1>Public::PostComments#new</h1>
-<p>Find me in app/views/public/post_comments/new.html.erb</p>
+<h2>商品レビュー</h2>
+
+<div>
+    <%= form_with model: @post_comment, url: item_post_comments_path, method: :post, local: true do |f| %>
+        <div class="form-group">
+            <%= f.label :name, "ニックネーム" %>
+            <%= f.text_field :name %>
+        </div>
+        <div class="form-group" id="star">
+            <%= f.label :rate, "評価" %>
+            <%= f.hidden_field :rate, :value => "score" %>
+
+            <script>
+                $('#star').raty({
+                    size     : 36,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    scoreName: 'post_comment[rate]',
+                    half: false,
+                });
+            </script>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :comment, "コメント" %>
+            <%= f.text_area :comment, :size => "50x6", placeholder: "商品へのレビューありがとうございます！あなたのコメントがお店の励みになります。" %>
+        </div>
+        <div class="form-group">
+            <%= f.submit "投稿", class: "btn btn-outline-secondary btn-sm" %>
+        </div>
+    <% end %>
+</div>

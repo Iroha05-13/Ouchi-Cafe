@@ -23,4 +23,8 @@ class Item < ApplicationRecord
     (price*1.08).floor
   end
 
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+
 end

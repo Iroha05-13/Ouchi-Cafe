@@ -62,9 +62,6 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-  def complete
-  end
-
   def index
     @orders = current_user.orders
   end

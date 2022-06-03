@@ -1,0 +1,15 @@
+<div class="item-box col-3 mb-3">
+  <div>
+    <%= link_to item_path(item.id) do %>
+      <%= image_tag item.get_item_image(200, 120) %><br>
+      <%= item.name %><br>
+    <% end %>
+    ￥<%= item.with_tax %>
+  </div>
+  <div>
+    <%= link_to shop_path(item.shop.id) do %>
+      <%= image_tag item.shop.get_shop_image(48,50), class: "rounded-circle"; %>
+      <%= item.shop.name %>
+    <% end %>
+  </div>
+</div>
