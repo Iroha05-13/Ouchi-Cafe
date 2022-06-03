@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    margin: 0;
+    font-family: '游ゴシック', 'Yu Gothic', '游ゴシック体', YuGothic, sans-serif;
+    font-size: 16px;
+    line-height: 1.625;
+    color: #2E2929;
+    overflow-x: hidden;
+    width: 100vw;
+}

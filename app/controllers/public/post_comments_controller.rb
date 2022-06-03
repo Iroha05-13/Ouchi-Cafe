@@ -7,12 +7,17 @@ class Public::PostCommentsController < ApplicationController
   def create
     item = Item.find(params[:item_id])
     post_comment = current_user.post_comments.new(post_comment_params)
-    post_comment.item_id = item.id
-    post_comment.save
-    redirect_to item_path(item.id)
+    if post_comment.save
+      redirect_to item_path(item.id)
+    else
+      @post_comment = PostComment.new
+      @item = Item.find(params[:item_id])
+      render :new
+    end
   end
 
   def destroy
+    item = Item.find(params[:item_id])
     PostComment.find(params[:id]).destroy
     redirect_to item_path(item.id)
   end

@@ -1,3 +1,25 @@
-<%= image_tag @shop.get_shop_image(480,360) %>
+<div>
+  <%= image_tag @shop.get_shop_image(480,360) %>
 
-<h2><%= @shop.name %></h2>
+  <h2><%= @shop.name %></h2>
+</div>
+
+<% if @shop.introduction.present? && @shop.shop_in_image.present? %>
+  <div>
+    <%= image_tag @shop.get_shop_in_image(480,360) %><br>
+    <h3>お店のこだわり</h3>
+    <h4><%= @shop.introduction %></h4>
+  </div>
+
+  <div>
+    <h5>店舗情報</h5>
+    <%= image_tag @shop.get_shop_image(320,240) %>
+    <div>
+      <%= @shop.name %><br>
+      <p><strong>店舗住所</strong></p>
+      〒<%= @shop.postal_code %><br>
+      <%= @shop.address %>
+    </div>
+  </div>
+<% else %>
+<% end %>
