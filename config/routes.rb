@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :users, except: [:new, :destroy]
+    resources :users, except: [:new, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
 
     resources :shops, only: [:edit, :update, :destroy]
 

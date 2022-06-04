@@ -1,0 +1,31 @@
+<div>
+  <h5>商品レビュー</h5>
+  <% if post_comments.present? %>
+    <% post_comments.each do |post_comment| %>
+      <div id="star<%= post_comment.id %>">
+        <script>
+          $('#star<%= post_comment.id %>').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            half: false,
+            readOnly: true,
+            score: <%= post_comment.rate%>
+          });
+        </script><br>
+        投稿者:<%= post_comment.name %>(<%= post_comment.created_at.strftime("%Y/%m/%d") %>)<br>
+        <% if admin_signed_in? %>
+          <%= link_to post_comment.item.name, item_path(post_comment.item.id) %><br>
+        <% end %>
+        <%= post_comment.comment %>
+        <% if post_comment.user == current_user %>
+          <%= link_to "削除", item_post_comment_path(post_comment.item, post_comment), method: :delete, "data-confirm" => "コメントを削除します。よろしいですか？", class: "btn btn-sm btn-outline-secondary" %>
+        <% elsif admin_signed_in? %>
+        <%= link_to "削除", admin_user_post_comment_path(post_comment.user, post_comment), method: :delete, "data-confirm" => "不適切と思われるコメントを削除します。よろしいですか？", class: "btn btn-sm btn-outline-secondary" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>まだ商品へのレビューがありません。</p>
+  <% end %>
+</div>

@@ -50,10 +50,8 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "登録する" %>
+    <%= f.submit "登録する", class: "btn btn-outline-secondary btn-sm" %>
   </div>
 <% end %>
 
 <p>登録済みの方は<%= render "public/shared/links" %>からログインできます</p>
-
-<p>ショップの登録は<%= link_to "こちら", new_shop_registration_path %>から</p>
