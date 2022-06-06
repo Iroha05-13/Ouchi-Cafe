@@ -1,0 +1,38 @@
+<div>
+  <h2>商品レビュー</h2>
+
+  <table class="table table-sm table-bordered">
+    <tr>
+      <th>評価</th>
+      <th>コメント</th>
+      <th>投稿者(顧客名)</th>
+      <th>商品名</th>
+      <th>販売ショップ</th>
+      <th></th>
+    </tr>
+
+    <% @post_comments.each do |post_comment| %>
+      <tr>
+        <td id="star<%= post_comment.id %>">
+          <script>
+            $('#star<%= post_comment.id %>').raty({
+              size     : 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              half: false,
+              readOnly: true,
+              score: <%= post_comment.rate%>
+            });
+          </script>
+        </td>
+        <td><%= post_comment.comment %></td>
+        <td><%= post_comment.name %>(<%= post_comment.user.name %>)</td>
+        <td><%= post_comment.item.name %></td>
+        <td><%= post_comment.item.shop.name %></td>
+        <td>
+          <%= link_to "削除", admin_user_post_comment_path(post_comment.user, post_comment), method: :delete, "data-confirm" => "不適切と思われるコメントを削除します。よろしいですか？", class: "btn btn-sm btn-outline-secondary" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

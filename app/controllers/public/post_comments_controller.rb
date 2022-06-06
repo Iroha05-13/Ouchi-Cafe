@@ -1,4 +1,6 @@
 class Public::PostCommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @post_comment = PostComment.new
     @item = Item.find(params[:item_id])

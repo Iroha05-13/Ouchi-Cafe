@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:destroy]
     end
 
+    resources :post_comments, only: [:index]
+
     resources :shops, only: [:edit, :update, :destroy]
 
     root to: 'homes#top'

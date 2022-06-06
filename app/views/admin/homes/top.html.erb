@@ -14,7 +14,7 @@
     <tr>
       <td><%= shop.id %></td>
       <td>
-        <%= shop.name %>
+        <%= link_to shop.name, shop_path(shop.id) %>
       </td>
       <td>
         〒<%= shop.postal_code %><br>
