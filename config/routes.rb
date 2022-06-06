@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:index]
 
     resources :shops, only: [:edit, :update, :destroy]
+    
+    resources :orders, only: [:index, :show, :update]
 
     root to: 'homes#top'
   end
@@ -60,7 +62,7 @@ Rails.application.routes.draw do
 
   namespace :shop do
     resources :items, except: [:show, :destroy]
-    resources :orders, only: [:index, :show, :update]
+    resources :orders, only: [:show]
   end
 
 end

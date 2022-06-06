@@ -1,6 +1,7 @@
 class Shop::ShopsController < ApplicationController
   def show
     @shop = Shop.find(params[:id])
+    @orders = Order.all
   end
 
   def edit

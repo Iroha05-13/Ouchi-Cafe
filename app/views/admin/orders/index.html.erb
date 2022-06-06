@@ -1,0 +1,41 @@
+<div>
+  <h2>全ての注文履歴</h2>
+
+  <table class="table table-sm">
+    <tr>
+      <th>購入日</th>
+      <th>購入者</th>
+      <th>購入商品</th>
+      <th>注文ステータス</th>
+      <th></th>
+    </tr>
+
+    <% @orders.each do |order| %>
+      <% order.order_details.each do |order_detail| %>
+        <% if order_detail.item.id == current_shop.id? %>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+              <td><%= order.user.name %></td>
+              <td>
+                <% order.order_details.each do |order_detail| %>
+                  <%= image_tag order_detail.item.get_item_image(75,45) %>
+                  <%= order_detail.item.name %>
+                <% break  %>
+                <% end %>
+              </td>
+              <td><%= order.status_i18n %></td>
+              <td>
+                <% if admin_signed_in? %>
+                  <%= link_to "詳細", admin_order_path(order.id), class: "btn btn-outline-secondary btn-sm" %>
+                <% elsif shop_signed_in? %>
+                  <%= link_to "詳細", shop_order_path(order.id), class: "btn btn-outline-secondary btn-sm" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </table>
+</div>

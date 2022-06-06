@@ -1,0 +1,86 @@
+<div>
+  <h2>購入履歴詳細</h2>
+
+  <div>
+    <table class="table table-sm">
+      <tr>
+        <th>購入日</th>
+        <% if admin_signed_in? || shop_signed_in? %>
+          <th>購入者</th>
+        <% end %>
+        <th>配送先</th>
+        <th>お支払い方法</th>
+        <th>ステータス</th>
+      </tr>
+      <tr>
+        <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+        <% if admin_signed_in? || shop_signed_in? %>
+          <td><%= order.user.name %></td>
+        <% end %>
+        <td>
+          <%= order.name %><br>
+          〒<%= order.postal_code %>
+          <%= order.address %>
+        </td>
+        <td><%= order.payment_i18n %></td>
+        <td>
+          <% if admin_signed_in? %>
+            <%=form_with model: order, url: admin_order_path(order.id), method: :patch, local: true do |f| %>
+              <%= f.select :status, Order.statuses_i18n.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]}, class: "form-control" %>
+              <%= f.submit "更新", class: "btn btn-outline-secondary btn-sm" %>
+            <% end %>
+          <% else %>
+            <%= order.status_i18n %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <h3>請求情報</h3>
+    <table class="table table-sm">
+      <tr>
+        <th>商品の小計</th>
+        <td>￥<%= order.total_price - order.postage %></td>
+      </tr>
+      <tr>
+        <th>送料</th>
+        <td>￥<%= order.postage %></td>
+      </tr>
+      <tr>
+        <th>ご請求額</th>
+        <td>￥<%= order.total_price %></td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <h3>注文内容</h3>
+    <table class="table table-sm">
+      <tr>
+        <th>購入商品</th>
+        <% if admin_signed_in? %>
+          <th>販売ショップ</th>
+        <% end %>
+        <th>購入価格(税込)</th>
+        <th>購入数</th>
+        <th>小計</th>
+      </tr>
+      <% order.order_details.each do |order_detail| %>
+        <tr>
+          <td>
+            <%= link_to item_path(order_detail.item.id) do %>
+              <%= image_tag order_detail.item.get_item_image(75,45) %>
+              <%= order_detail.item.name %>
+            <% end %>
+          </td>
+          <% if admin_signed_in? %>
+            <td><%= order_detail.item.shop.name %></td>
+          <% end %>
+          <td><%= order_detail.price %></td>
+          <td><%= order_detail.amount %></td>
+          <td><%= order_detail.price * order_detail.amount %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
