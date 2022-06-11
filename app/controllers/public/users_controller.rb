@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   def show
     @user = current_user
+    @orders = @user.orders.order(created_at: :desc).limit(5)
   end
 
   def edit

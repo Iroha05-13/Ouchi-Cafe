@@ -1,19 +1,23 @@
-<h2>ショップのログイン</h2>
+<div class="row">
+  <h2 class="col-12">ショップのログイン</h2>
 
 <%= form_with model: @shop, url: shop_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email, "Eメールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="col-sm-12 mx-auto mt-3">
+    <table class="table table-sm table-borderless form-group">
+      <tr>
+        <td><%= f.label :email, "Eメールアドレス" %></td>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "30" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :password, "パスワード" %></td>
+        <td><%= f.password_field :password, autocomplete: "current-password", :size => "30" %></td>
+      </tr>
+    </table>
   </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
+  <div class="actions text-center">
     <%= f.submit "ログイン", class: "btn btn-outline-secondary btn-sm" %>
   </div>
 <% end %>
 
-<p>新規登録は<%= render "shop/shared/links" %>から</p>
+<p class="col-12 my-5">新規登録は<%= render "shop/shared/links" %>から</p>
+</div>

@@ -1,7 +1,7 @@
-<div>
+<div class="row">
   <h2>購入履歴詳細</h2>
 
-  <div>
+  <div class="col-sm-12 mx-auto mt-3">
     <table class="table table-sm">
       <tr>
         <th>購入日</th>
@@ -9,7 +9,6 @@
           <th>購入者</th>
         <% end %>
         <th>配送先</th>
-        <th>お支払い方法</th>
         <th>ステータス</th>
       </tr>
       <tr>
@@ -22,7 +21,6 @@
           〒<%= order.postal_code %>
           <%= order.address %>
         </td>
-        <td><%= order.payment_i18n %></td>
         <td>
           <% if admin_signed_in? %>
             <%=form_with model: order, url: admin_order_path(order.id), method: :patch, local: true do |f| %>
@@ -36,7 +34,7 @@
       </tr>
     </table>
   </div>
-  <div>
+  <div class="col-sm-12 col-md-4 mt-3">
     <h3>請求情報</h3>
     <table class="table table-sm">
       <tr>
@@ -51,9 +49,13 @@
         <th>ご請求額</th>
         <td>￥<%= order.total_price %></td>
       </tr>
+      <tr>
+        <th>お支払い方法</th>
+        <td><%= order.payment_i18n %></td>
+      </tr>
     </table>
   </div>
-  <div>
+  <div class="col-sm-12 col-md-7 mt-3">
     <h3>注文内容</h3>
     <table class="table table-sm">
       <tr>
@@ -68,7 +70,7 @@
       <% order.order_details.each do |order_detail| %>
         <tr>
           <td>
-            <%= link_to item_path(order_detail.item.id) do %>
+            <%= link_to item_path(order_detail.item.id), class: "text-dark" do %>
               <%= image_tag order_detail.item.get_item_image(75,45) %>
               <%= order_detail.item.name %>
             <% end %>
@@ -76,9 +78,9 @@
           <% if admin_signed_in? %>
             <td><%= order_detail.item.shop.name %></td>
           <% end %>
-          <td><%= order_detail.price %></td>
+          <td>￥<%= order_detail.price %></td>
           <td><%= order_detail.amount %></td>
-          <td><%= order_detail.price * order_detail.amount %></td>
+          <td>￥<%= order_detail.price * order_detail.amount %></td>
         </tr>
       <% end %>
     </table>

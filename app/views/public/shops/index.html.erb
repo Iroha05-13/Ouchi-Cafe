@@ -6,7 +6,7 @@
       <div class="card shop-box mx-3" style="width: 14rem;">
         <%= link_to shop_path(shop.id), class: "text-dark" do %>
           <%= image_tag shop.get_shop_image(200,150), class: "card-img-top" %>
-          <p class="card-body"><%= shop.name %></p>
+          <p class="card-body card-title"><%= shop.name %></p>
         <% end %>
       </div>
     <% end %>

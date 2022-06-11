@@ -1,53 +1,58 @@
-<h2>ショップの新規登録</h2>
+<div class="row">
+  <h2 class="col-12">ショップの新規登録</h2>
 
-<%= form_with model: @shop, url: shop_registration_path, id: 'new_shop', class: 'new_shop' do |f| %>
-  <%= render "shop/shared/error_messages", resource: resource %>
+  <p>
+    ※登録時点ではショップ一覧に記載されません。<br>
+    登録後、編集画面からお店のこだわりや店内画像、商品登録を行って初めて記載されますので、ご了承ください。
+  </p>
 
-  <div class="field">
-    <%= f.label :shop_image, "店舗の写真" %><br>
-    <%= f.file_field :shop_image, accept: "image/*" %>
-  </div><br>
+  <%= form_with model: @shop, url: shop_registration_path, id: 'new_shop', class: 'new_shop' do |f| %>
+    <%= render "shop/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.text_field :name, autofocus: true, placeholder: "店舗名" %>
-  </div><br>
+    <div class="col-sm-12 mx-auto mt-3">
+      <table class="table table-sm table-borderless form-group">
+        <tr>
+          <td class="text-right"><%= f.label :shop_image, "店舗の写真" %></td>
+          <td><%= f.file_field :shop_image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <td class="text-right"><%= f.label :name, "店舗名" %></td>
+          <td><%= f.text_field :name, autofocus: true %></td>
+        </tr>
+        <tr>
+          <td class="text-right"><%= f.label :postal_code, "〒" %></td>
+          <td><%= f.text_field :postal_code, autofocus: true, placeholder: "000-0000" %></td>
+        </tr>
+        <tr>
+          <td class="text-right"><%= f.label :address, "住所" %></td>
+          <td><%= f.text_field :address, autofocus: true, placeholder: "〇〇県××市～", :size => "45" %></td>
+        </tr>
+        <tr>
+          <td class="text-right"><%= f.label :telephone_number, "電話番号" %></td>
+          <td><%= f.text_field :telephone_number, autofocus: true, placeholder: "ハイフンなし" %></td>
+        </tr>
+        <tr>
+          <td class="text-right"><%= f.label :email, "Eメールアドレス" %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "30" %></td>
+        </tr>
+        <tr>
+          <td class="text-right">
+            <%= f.label :password, "パスワード" %>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> 文字以上)</em>
+            <% end %>
+          </td>
+          <td><%= f.password_field :password, autocomplete: "new-password", :size => "30" %></td>
+        </tr>
+        <tr>
+          <td class="text-right"><%= f.label :password_confirmation,"パスワード(確認用)" %></td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password", :size => "30" %></td>
+        </tr>
+      </table>
 
-  <div class="field">
-    <%= f.label :postal_code, "〒" %>
-    <%= f.text_field :postal_code, autofocus: true, placeholder: "000-0000" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address, "住所" %>
-    <%= f.text_field :address, autofocus: true, placeholder: "〇〇県××市～", :size => "45" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :telephone_number, "電話番号" %>
-    <%= f.text_field :telephone_number, autofocus: true, placeholder: "ハイフンなし" %>
-  </div><br>
-
-  <div class="field">
-    <%= f.label :email, "Eメールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation,"パスワード(確認用)" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "登録する", class: "btn btn-outline-secondary btn-sm" %>
-  </div>
-<% end %>
-
-<p>ショップのログインは<%= render "shop/shared/links" %>から</p>
+      <div class="actions text-center">
+        <%= f.submit "登録する", class: "btn btn-outline-secondary btn-sm" %>
+      </div>
+    </div>
+  <% end %>
+</div>

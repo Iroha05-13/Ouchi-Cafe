@@ -1,0 +1,30 @@
+<div>
+  <table class="table table-sm">
+    <tr>
+      <th>購入日</th>
+      <th>購入商品</th>
+      <th>注文ステータス</th>
+      <th></th>
+    </tr>
+    <% if orders.present? %>
+      <% orders.each do |order| %>
+        <tr>
+          <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+          <td>
+            <% order.order_details.each do |order_detail| %>
+              <%= image_tag order_detail.item.get_item_image(75,45) %>
+              <%= order_detail.item.name %>
+            <% break %>
+            <% end %>
+          </td>
+          <td><%= order.status_i18n %></td>
+          <td><%= link_to "詳細", order_path(order.id), class: "btn btn-outline-secondary btn-sm" %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="4">まだ購入履歴がありません</td>
+      </tr>
+    <% end %>
+  </table>
+</div>
