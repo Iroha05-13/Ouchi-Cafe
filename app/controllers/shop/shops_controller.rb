@@ -1,15 +1,15 @@
 class Shop::ShopsController < ApplicationController
   def show
-    @shop = Shop.find(params[:id])
-    @orders = Order.all
+    @shop = current_shop
+    @items = @shop.items
   end
 
   def edit
-    @shop = Shop.find(params[:id])
+    @shop = current_shop
   end
 
   def update
-    shop = Shop.find(params[:id])
+    shop = current_shop
     if shop.update(shop_params)
       redirect_to show_shop_path(shop.id)
     else

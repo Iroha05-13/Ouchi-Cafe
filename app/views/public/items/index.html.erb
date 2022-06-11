@@ -1,5 +1,7 @@
-<h2>商品一覧</h2>
+<div class="row">
+  <h2 class="col-12">商品一覧</h2>
 
-<% @items.each do |item| %>
-  <%= render "item", item: item %>
-<% end %>
+  <% @items.each do |item| %>
+    <%= render "item", item: item %>
+  <% end %>
+</div>

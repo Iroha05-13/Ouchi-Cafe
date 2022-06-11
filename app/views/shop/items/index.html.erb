@@ -1,28 +1,30 @@
-<h2>商品一覧</h2>
-<table class="table table-sm">
-  <tr>
-    <th>商品名</th>
-    <th>商品価格(税込)</th>
-    <th>販売ステータス</th>
-    <th></th>
-  </tr>
-
-  <% @items.each do |item| %>
+<div>
+  <h2>商品一覧</h2>
+  <table class="table table-sm">
     <tr>
-      <td>
-        <%= link_to item.name, item_path(item.id) %>
-      </td>
-      <td><%= item.with_tax %></td>
-      <td>
-        <% if item.is_active == true %>
-          <p>販売中</p>
-        <% else %>
-          <p>販売停止中</p>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to "編集", edit_shop_item_path(item.id) %>
-      </td>
+      <th>商品名</th>
+      <th>商品価格(税込)</th>
+      <th>販売ステータス</th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
+  
+    <% @items.each do |item| %>
+      <tr>
+        <td>
+          <%= link_to item.name, item_path(item.id) %>
+        </td>
+        <td><%= item.price %>円(<%= item.with_tax %>円)</td>
+        <td>
+          <% if item.is_active == true %>
+            <p>販売中</p>
+          <% else %>
+            <p>販売停止中</p>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "編集", edit_shop_item_path(item.id) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

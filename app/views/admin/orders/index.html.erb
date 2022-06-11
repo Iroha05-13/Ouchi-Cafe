@@ -25,13 +25,7 @@
                 <% end %>
               </td>
               <td><%= order.status_i18n %></td>
-              <td>
-                <% if admin_signed_in? %>
-                  <%= link_to "詳細", admin_order_path(order.id), class: "btn btn-outline-secondary btn-sm" %>
-                <% elsif shop_signed_in? %>
-                  <%= link_to "詳細", shop_order_path(order.id), class: "btn btn-outline-secondary btn-sm" %>
-                <% end %>
-              </td>
+              <td><%= link_to "詳細", admin_order_path(order.id), class: "btn btn-outline-secondary btn-sm" %></td>
             </tr>
           <% end %>
         <% end %>

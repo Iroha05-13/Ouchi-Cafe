@@ -1,5 +1,5 @@
 <div>
-  <%= link_to shop_path(@item.shop.id) do %>
+  <%= link_to shop_path(@item.shop.id), class: "text-dark" do %>
     <span><%= @item.shop.name %></span>
   <% end %>
 </div>
@@ -10,7 +10,7 @@
 
 <div>
   <h3><%= @item.name %></h3>
-  <h3>￥<%= @item.with_tax %></h3>
+  <h3>￥<%= @item.with_tax %>円(税込) <span class="text-sm">+送料(税込5000円以上ご購入で送料無料！)</span></h3>
 </div>
 
 <div class="form-group">

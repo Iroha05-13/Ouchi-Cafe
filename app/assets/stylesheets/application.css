@@ -27,3 +27,7 @@ body {
 .about-text {
     line-height: 3;
 }
+
+.text-sm {
+    font-size: 20px;
+}
