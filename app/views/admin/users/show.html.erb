@@ -1,44 +1,46 @@
-<h2><%= @user.name %>様の顧客情報</h2>
+<div class="row">
+  <h2 class="col-12"><%= @user.name %>様の顧客情報</h2>
 
-<div>
-  <div class="text-right">
-    <%= link_to "編集", edit_admin_user_path(@user.id), class: "btn btn-outline-secondary btn-sm" %>
+  <div class="col-12 mx-">
+    <div class="text-right mb-1">
+      <%= link_to "編集", edit_admin_user_path(@user.id), class: "btn btn-outline-secondary btn-sm" %>
+    </div>
+    <table class="table table-sm table-bordered">
+      <tr>
+        <th>名前</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>カナ</th>
+        <td><%= @user.name_kana %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td>
+          〒<%= @user.postal_code %><br>
+          <%= @user.address %>
+        </td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @user.telephone_number %></td>
+      </tr>
+      <tr>
+        <th>Eメールアドレス</th>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <th>会員ステータス</th>
+        <td>
+          <% if @user.is_active == true %>
+            有効
+          <% else %>
+            退会
+          <% end %>
+        </td>
+      </tr>
+    </table>
   </div>
-  <table class="table table-sm table-bordered">
-    <tr>
-      <th>名前</th>
-      <td><%= @user.name %></td>
-    </tr>
-    <tr>
-      <th>カナ</th>
-      <td><%= @user.name_kana %></td>
-    </tr>
-    <tr>
-      <th>住所</th>
-      <td>
-        〒<%= @user.postal_code %><br>
-        <%= @user.address %>
-      </td>
-    </tr>
-    <tr>
-      <th>電話番号</th>
-      <td><%= @user.telephone_number %></td>
-    </tr>
-    <tr>
-      <th>Eメールアドレス</th>
-      <td><%= @user.email %></td>
-    </tr>
-    <tr>
-      <th>会員ステータス</th>
-      <td>
-        <% if @user.is_active == true %>
-          有効
-        <% else %>
-          退会
-        <% end %>
-      </td>
-    </tr>
-  </table>
-</div>
 
-<%= render "public/items/item_rate", post_comments: @post_comments %>
+  <%= render "public/items/item_rate", post_comments: @post_comments %>
+</div>

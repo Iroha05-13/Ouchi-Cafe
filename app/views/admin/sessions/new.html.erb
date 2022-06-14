@@ -1,19 +1,9 @@
-<h2>管理者ログイン</h2>
+<div class="row">
+  <h2 class="col-12">管理者ログイン</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, "Eメール" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "public/sessions/login", f: f %>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :password, "パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン", class: "btn btn-outline-secondary btn-sm" %>
-  </div>
-<% end %>
-
-<%= render "admin/shared/links" %>
+  <%= render "admin/shared/links" %>
+</div>

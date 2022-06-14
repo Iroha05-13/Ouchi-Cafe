@@ -1,20 +1,22 @@
-<h2><span><%= @user.name %></span>さんの会員情報</h2>
+<div class="row">
+  <h2 class="col-12 mb-3"><span><%= @user.name %></span>さんの会員情報</h2>
 
-<%= form_with model: @user, url: admin_user_path, method: :patch, local: true do |f| %>
+  <%= form_with model: @user, url: admin_user_path, method: :patch, local: true do |f| %>
 
-  <%= render "public/users/edituser", f: f %>
+    <%= render "public/users/edituser", f: f %>
 
-  <div class="form-group">
-    <%= f.label :is_active, "会員ステータス" %>
-    <div class="radio_button">
-      <%= f.radio_button :is_active, true %>
-      <%= f.label :is_active, "有効" ,value: true %>
-      <%= f.radio_button :is_active, false %>
-      <%= f.label :is_active, "退会", value: false %>
+    <div class="form-group">
+      <%= f.label :is_active, "会員ステータス" %>
+      <div class="radio_button">
+        <%= f.radio_button :is_active, true %>
+        <%= f.label :is_active, "有効" ,value: true %>
+        <%= f.radio_button :is_active, false %>
+        <%= f.label :is_active, "退会", value: false %>
+      </div>
     </div>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "変更を保存", class: "btn btn-outline-secondary btn-sm" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "変更を保存", class: "btn btn-outline-secondary btn-sm" %>
+    </div>
+  <% end %>
+</div>

@@ -1,8 +1,12 @@
-<p>
-  <strong>本当に退会しますか？</strong><br>
-  退会すると商品の購入や注文履歴へのアクセスが出来なくなります。<br>
-  当サイトを利用するには、再度ご登録が必要となります。
-</p>
+<div class="row">
+  <p class="text-center mt-5 mb3-3 col-12">
+    <strong>本当に退会しますか？</strong><br>
+    退会すると商品の購入や注文履歴へのアクセスが出来なくなります。<br>
+    当サイトを利用するには、再度ご登録が必要となります。
+  </p>
 
-<%= link_to "OK", withdrawal_path, method: :patch, "data-confirm" => "退会します。よろしいですか？" %>
-<%= link_to "キャンセル", users_path %>
+  <div class="text-center mb-5 mx-auto pb-5">
+    <%= link_to "OK", withdrawal_path, method: :patch, "data-confirm" => "退会します。よろしいですか？", class: "btn-outline-success" %>|
+    <%= link_to "キャンセル", users_path, class: "btn-outline-secondary" %>
+  </div>
+</div>

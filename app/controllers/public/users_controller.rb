@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = current_user
     @orders = @user.orders.order(created_at: :desc).limit(5)
+    @post_comments = current_user.post_comments
   end
 
   def edit

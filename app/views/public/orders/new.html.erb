@@ -1,53 +1,59 @@
-<div>
-  <%= form_with model: @order, url: confirm_path, method: :post, local: true do |f| %>
-    <div class="form-group radio_button">
-      <p><strong>お支払い方法</strong></p>
-      <%= f.radio_button :payment, Order.payments.key(0) %>
-      <%= f.label :payment, Order.payments_i18n[:credit_card] %> <i>　</i>
-      <%= f.radio_button :payment, Order.payments.key(1) %>
-      <%= f.label :payment, Order.payments_i18n[:transfer] %>
-    </div>
-    <div class="form-group">
-      <p><strong>配送先</strong></p>
+<div class="row">
+  <div class="col-12">
+    <%= form_with model: @order, url: confirm_path, method: :post, local: true do |f| %>
       <div class="form-group radio_button">
-        <%= f.radio_button :select_address, 0 %>
-        <%= f.label :select_address_0, "ご自身の住所" %><br>
-        〒<%= current_user.postal_code %><br>
-        <%= current_user.address %><br>
-        <%= current_user.name %><br>
+        <p><strong>お支払い方法</strong></p>
+        <%= f.radio_button :payment, Order.payments.key(0) %>
+        <%= f.label :payment, Order.payments_i18n[:credit_card] %> <i>　</i>
+        <%= f.radio_button :payment, Order.payments.key(1) %>
+        <%= f.label :payment, Order.payments_i18n[:transfer] %>
       </div>
-      <div class="form-group radio_button">
-        <%= f.radio_button :select_address, 1 %>
-        <%= f.label :select_address_1, "登録済み住所から選択" %><br>
-        <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :order_address) %>
+      <div class="form-group">
+        <p><strong>配送先</strong></p>
+        <div class="form-group radio_button">
+          <%= f.radio_button :select_address, 0 %>
+          <%= f.label :select_address_0, "ご自身の住所" %><br>
+          <i>　</i>〒<%= current_user.postal_code %><br>
+          <i>　</i><%= current_user.address %><br>
+          <i>　</i><%= current_user.name %><br>
+        </div>
+        <div class="form-group radio_button">
+          <%= f.radio_button :select_address, 1 %>
+          <%= f.label :select_address_1, "登録済み住所から選択" %><br>
+          <i>　</i>
+          <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :order_address) %>
+        </div>
+        <div class="form-group radio_button">
+          <%= f.radio_button :select_address, 2 %>
+          <%= f.label :select_address_2, "新しい配送先" %>
+          <div class="form-group">
+            <i>　</i>
+            <%= f.label :postal_code, "〒" %>
+            <%= f.text_field :postal_code, autofocus: true, placeholder: "000-0000" %>
+          </div>
+          <div class="form-group">
+            <i>　</i>
+            <%= f.label :address, "住所" %>
+            <%= f.text_field :address, autofocus: true, placeholder: "〇〇県××市～", :size => "45" %>
+          </div>
+          <div class="form-group">
+            <i>　</i>
+            <%= f.label :name, "宛先" %>
+            <%= f.text_field :name, autofocus: true %>
+          </div>
+        </div>
       </div>
-      <div class="form-group radio_button">
-        <%= f.radio_button :select_address, 2 %>
-        <%= f.label :select_address_2, "新しい配送先" %>
-        <div class="form-group">
-          <%= f.label :postal_code, "〒" %>
-          <%= f.text_field :postal_code, autofocus: true, placeholder: "000-0000" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :address, "住所" %>
-          <%= f.text_field :address, autofocus: true, placeholder: "〇〇県××市～", :size => "45" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :name, "宛先" %>
-          <%= f.text_field :name, autofocus: true %>
-        </div>
-      </div>
-    </div>
 
-    <div class="form-group">
-      <%= f.hidden_field :status, :value => Order.statuses.key(0) %>
-      <%= f.hidden_field :cart_items, :value => @cart_items, class: "form-control" %>
-      <% if @total >= 5000 %>
-        <%= f.hidden_field :postage, :value => "0" %>
-      <% else %>
-        <%= f.hidden_field :postage, :value => "500" %>
-      <% end %>
-      <%= f.submit "確認画面へ進む", class: "btn btn-outline-secondary btn-sm" %>
-    </div>
-  <% end %>
+      <div class="form-group">
+        <%= f.hidden_field :status, :value => Order.statuses.key(0) %>
+        <%= f.hidden_field :cart_items, :value => @cart_items, class: "form-control" %>
+        <% if @total >= 5000 %>
+          <%= f.hidden_field :postage, :value => "0" %>
+        <% else %>
+          <%= f.hidden_field :postage, :value => "500" %>
+        <% end %>
+        <%= f.submit "確認画面へ進む", class: "btn btn-outline-secondary btn-sm" %>
+      </div>
+    <% end %>
+  </div>
 </div>

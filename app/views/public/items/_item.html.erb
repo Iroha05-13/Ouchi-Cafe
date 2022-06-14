@@ -6,11 +6,11 @@
     <% end %>
     <h5 class="card-title"><strong>￥<%= item.with_tax %></strong></h5>
   </div>
-  <div class="card-footer">
+  <div class="card-footer h-100">
     <%= link_to shop_path(item.shop.id), class: "text-dark" do %>
       <div class="card-text">
         <%= image_tag item.shop.get_shop_image(50,50), class: "bt-3 rounded-circle"; %>
-        <%= truncate(item.shop.name, length: 10) %>
+        <%= truncate(item.shop.name, length: 10, class: "w-100") %>
       </div>
     <% end %>
   </div>

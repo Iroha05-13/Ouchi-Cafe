@@ -1,33 +1,35 @@
-<h2>顧客ユーザー</h2>
+<div class="row">
+  <h2 class="col-12">顧客ユーザー</h2>
 
-<table class="table table-sm">
-  <tr>
-    <th>ユーザーID</th>
-    <th>名前</th>
-    <th>住所</th>
-    <th>メールアドレス</th>
-    <th>会員ステータス</th>
-  </tr>
-
-  <% @users.each do |user| %>
+  <table class="table table-sm mx-auto">
     <tr>
-      <td><%= user.id %></td>
-      <td>
-        <%= link_to user.name, admin_user_path(user.id) %><br>
-        (<%= user.name_kana %>)
-      </td>
-      <td>
-        〒<%= user.postal_code %><br>
-        <%= user.address %>
-      </td>
-      <td><%= user.email %></td>
-      <td>
-        <% if user.is_active == true %>
-          <p class="text-success">有効</p>
-        <% else %>
-          <p>退会</p>
-        <% end %>
-      </td>
+      <th>ユーザーID</th>
+      <th>名前</th>
+      <th>住所</th>
+      <th>メールアドレス</th>
+      <th>会員ステータス</th>
     </tr>
-  <% end %>
-</table>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td>
+          <%= link_to user.name, admin_user_path(user.id), class: "text-dark" %><br>
+          (<%= user.name_kana %>)
+        </td>
+        <td>
+          〒<%= user.postal_code %><br>
+          <%= user.address %>
+        </td>
+        <td><%= user.email %></td>
+        <td>
+          <% if user.is_active == true %>
+            <p class="text-success">有効</p>
+          <% else %>
+            <p>退会</p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

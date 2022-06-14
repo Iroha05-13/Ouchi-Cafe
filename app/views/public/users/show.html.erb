@@ -1,12 +1,19 @@
-<h2>マイページ</h2>
+<div class="row">
+    <h2 class="col-12">マイページ</h2>
 
-<%= link_to "お気に入り", users_favorites_path, class: "btn btn-outline-secondary btn-sm" %>
-<%= link_to "配送先", addresses_path, class: "btn btn-outline-secondary btn-sm" %>
-<%= link_to "登録情報の編集", edit_users_path, class: "btn btn-outline-secondary btn-sm" %>
-<%= link_to "退会する", unsubscribe_path, class: "btn btn-outline-secondary btn-sm" %>
+    <div class="menu-btn mb-3">
+        <%= link_to "お気に入り", users_favorites_path, class: "btn btn-outline-secondary btn-sm mx-1" %>
+        <%= link_to "配送先", addresses_path, class: "btn btn-outline-secondary btn-sm mx-1" %>
+        <%= link_to "登録情報の編集", edit_users_path, class: "btn btn-outline-secondary btn-sm mx-1" %>
+        <%= link_to "退会する", unsubscribe_path, class: "btn btn-outline-secondary btn-sm mx-1" %>
+    </div>
 
-<h3>最近の購入履歴</h3>
-<div class="text-right">
-    <%= link_to "注文履歴を全て表示", orders_path, class: "btn-outline-secondary btn-sm" %>
+    <h3 class="col-12">最近の購入履歴</h3>
+    <div class="text-right col-12 mb-1">
+        <%= link_to "注文履歴を全て表示", orders_path, class: "btn-outline-secondary btn-sm" %>
+    </div>
+
+    <%= render "public/orders/orders", orders: @orders %>
+
+    <%= render "public/items/item_rate", post_comments: @post_comments %>
 </div>
-<%= render "public/orders/orders", orders: @orders %>

@@ -1,3 +1,8 @@
-<div class="main-visual">
-  <%= image_tag '23658169_s.jpg', :size => "920x520" %>
+<div class="main-visual row">
+    <div>
+        <% @items.each do |item| %>
+            <%= image_tag item.get_item_image(600,360) %>
+        <% end %>
+    </div>
+    <h5>ようこそ、おうち＠カフェへ</h5>
 </div>

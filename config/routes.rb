@@ -27,7 +27,6 @@ Rails.application.routes.draw do
     resources :addresses, except: [:new]
 
     post 'orders/confirm', as: 'confirm'
-    get 'orders/complete', as: 'complete'
     resources :orders, except: [:edit, :update, :destroy]
 
     get 'users/unsubscribe', as: 'unsubscribe'

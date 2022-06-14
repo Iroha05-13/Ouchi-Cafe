@@ -1,21 +1,11 @@
-<h2>ログイン</h2>
+<div class="row">
+  <h2 class="col-12">ログイン</h2>
 
-<%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user' do |f| %>
-  <div class="field">
-    <%= f.label :email, "Eメールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user' do |f| %>
+    <%= render "login", f: f %>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :password, "パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <p class="col-12 mt-5">新規登録は<%= render "public/shared/links" %>から</p>
 
-  <div class="actions">
-    <%= f.submit "ログイン", class: "btn btn-outline-secondary btn-sm" %>
-  </div>
-<% end %>
-
-<p>新規登録は<%= render "public/shared/links" %>から</p>
-
-<p>ショップのログインは<%= link_to "こちら", new_shop_session_path %>から</p>
+  <p class="col-12 mb-5">ショップのログインは<%= link_to "こちら", new_shop_session_path %>から</p>
+</div>

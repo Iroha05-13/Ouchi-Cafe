@@ -1,8 +1,8 @@
-<div>
-  <h5>商品レビュー</h5>
+<div class="col-12 my-2">
+  <h5 class="col-12">商品レビュー</h5>
   <% if post_comments.present? %>
     <% post_comments.each do |post_comment| %>
-      <div id="star<%= post_comment.id %>">
+      <div id="star<%= post_comment.id %>" class="col-12 mb-3">
         <script>
           $('#star<%= post_comment.id %>').raty({
             size     : 36,
@@ -15,7 +15,7 @@
         </script><br>
         投稿者:<%= post_comment.name %>(<%= post_comment.created_at.strftime("%Y/%m/%d") %>)<br>
         <% if admin_signed_in? %>
-          <%= link_to post_comment.item.name, item_path(post_comment.item.id) %><br>
+          <%= link_to post_comment.item.name, item_path(post_comment.item.id), class: "text-dark" %><br>
         <% end %>
         <%= post_comment.comment %>
         <% if post_comment.user == current_user %>

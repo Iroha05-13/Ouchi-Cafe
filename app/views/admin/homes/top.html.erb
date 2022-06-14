@@ -1,36 +1,38 @@
-<h2>管理者トップ(登録ショップ一覧)</h2>
+<div class="row">
+  <h2 class="col-12">管理者トップ(登録ショップ一覧)</h2>
 
-<table class="table table-sm">
-  <tr>
-    <th>店舗ID</th>
-    <th>店舗名</th>
-    <th>住所</th>
-    <th>電話番号</th>
-    <th>メールアドレス</th>
-    <th></th>
-  </tr>
-
-  <% @shops.each do |shop| %>
+  <table class="table table-sm mx-auto">
     <tr>
-      <td><%= shop.id %></td>
-      <td>
-        <%= link_to shop.name, shop_path(shop.id) %>
-      </td>
-      <td>
-        〒<%= shop.postal_code %><br>
-        <%= shop.address %>
-      </td>
-      <td>
-        <% if shop.telephone_number.present? %>
-          <%= shop.telephone_number %>
-        <% else %>
-          <p>登録がありません</p>
-        <% end %>
-      </td>
-      <td><%= shop.email %></td>
-      <td>
-        <%= link_to "編集", edit_admin_shop_path(shop.id), class: "btn btn-outline-secondary btn-sm" %>
-      </td>
+      <th>店舗ID</th>
+      <th>店舗名</th>
+      <th>住所</th>
+      <th>電話番号</th>
+      <th>メールアドレス</th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
+
+    <% @shops.each do |shop| %>
+      <tr>
+        <td><%= shop.id %></td>
+        <td>
+          <%= link_to shop.name, shop_path(shop.id), class: "text-dark" %>
+        </td>
+        <td>
+          〒<%= shop.postal_code %><br>
+          <%= shop.address %>
+        </td>
+        <td>
+          <% if shop.telephone_number.present? %>
+            <%= shop.telephone_number %>
+          <% else %>
+            <p>登録がありません</p>
+          <% end %>
+        </td>
+        <td><%= shop.email %></td>
+        <td>
+          <%= link_to "編集", edit_admin_shop_path(shop.id), class: "btn btn-outline-secondary btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
