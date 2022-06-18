@@ -1,25 +1,29 @@
-<div>
-  <%= image_tag @shop.get_shop_image(480,360) %>
-
-  <h2><%= @shop.name %></h2>
-</div>
-
-<% if @shop.introduction.present? && @shop.shop_in_image.present? %>
-  <div>
-    <%= image_tag @shop.get_shop_in_image(480,360) %><br>
-    <h3>お店のこだわり</h3>
-    <h5><%= @shop.introduction %></h5>
+<div class="row">
+  <div class="col-md-5 col-sm-12 mt-3">
+    <%= image_tag @shop.get_shop_image(400,300) %>
   </div>
+  <h2 class="col-md-6 col-sm-12 mt-md-5 pt-3"><%= @shop.name %></h2>
 
-  <div>
-    <h5>店舗情報</h5>
-    <%= image_tag @shop.get_shop_image(320,240) %>
-    <div>
-      <%= @shop.name %><br>
-      <p><strong>店舗住所</strong></p>
-      〒<%= @shop.postal_code %><br>
-      <%= @shop.address %>
+  <% if @shop.introduction.present? && @shop.shop_in_image.present? %>
+    <div class="col-md-7 col-sm-12 my-4 offset-md-1 pt-md-5">
+      <h3>お店のこだわり</h3>
+      <h5><%= @shop.introduction %></h5>
     </div>
-  </div>
-<% else %>
-<% end %>
+
+    <div class="text-md-right col-md-4 col-sm-12 mt-md-5">
+      <%= image_tag @shop.get_shop_in_image(320,240) %>
+    </div>
+
+    <div>
+      <h5>店舗情報</h5>
+      <%= image_tag @shop.get_shop_image(320,240) %>
+      <div>
+        <%= @shop.name %><br>
+        <p><strong>店舗住所</strong></p>
+        〒<%= @shop.postal_code %><br>
+        <%= @shop.address %>
+      </div>
+    </div>
+  <% else %>
+  <% end %>
+</div>

@@ -1,36 +1,43 @@
-<div>
-  <%= link_to shop_path(@item.shop.id), class: "text-dark" do %>
-    <span><%= @item.shop.name %></span>
-  <% end %>
-</div>
-
-<div>
-  <%= image_tag @item.get_item_image(500,300) %>
-</div>
-
-<div>
-  <h3><%= @item.name %></h3>
-  <h3>￥<%= @item.with_tax %>円(税込) <span class="text-sm">+送料(税込5000円以上ご購入で送料無料！)</span></h3>
-</div>
-
-<div class="form-group">
-  <%= form_with model: @cart_item, url: "/cart_items", method: :post, local: true do |f| %>
-    <%= f.hidden_field :item_id, :value => @item.id, class: "form-control" %>
-    <%= f.select :amount, *[1..10], {selected: 1}, class: "form-control-sm" %>
-    <%= f.submit "カートに入れる", class: "btn btn-outline-secondary" %>
-  <% end %>
-</div>
-
-<div>
-  <% if user_signed_in? %>
-    <% if @item.favorited_by?(current_user) %>
-      <h1><%= link_to "♥", item_favorites_path(@item), method: :delete, remote: true %></h1>
-    <% else %>
-      <h1><%= link_to "♡", item_favorites_path(@item), method: :post, remote: true %></h1>
+<div class="row">
+  <div class="col-12 mb-1">
+    <%= link_to shop_path(@item.shop.id), class: "text-dark" do %>
+      <span><%= @item.shop.name %></span>
     <% end %>
-  <% end %>
+  </div>
 
-  <p><%= link_to "商品のレビューを書く", new_item_post_comment_path(@item), class: "btn btn-sm btn-outline-secondary" %></p>
+  <div class="col-md-5 col-sm-12 my-3">
+    <%= image_tag @item.get_item_image(500,300) %>
+  </div>
+
+  <div class="col-md-6 col-sm-12 mt-md-5">
+    <div>
+      <h3><%= @item.name %></h3>
+      <h6><%= @item.introduction %></h6><br>
+      <h3>￥<%= @item.with_tax %>円(税込) <br><span class="text-sm">+送料(税込5000円以上ご購入で送料無料！)</span></h3>
+    </div>
+
+    <div class="row mt-1">
+      <div class="col-md-5 col-sm-6 form-group">
+        <%= form_with model: @cart_item, url: "/cart_items", method: :post, local: true do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id, class: "form-control" %>
+          <%= f.select :amount, *[1..10], {selected: 1}, class: "form-control-sm" %>
+          <%= f.submit "カートに入れる", class: "btn btn-outline-secondary" %>
+        <% end %>
+      </div>
+      <div class="col-1">
+        <% if user_signed_in? %>
+          <% if @item.favorited_by?(current_user) %>
+            <h1><%= link_to "♥", item_favorites_path(@item), method: :delete, remote: true, class: "text-danger" %></h1>
+          <% else %>
+            <h1><%= link_to "♡", item_favorites_path(@item), method: :post, remote: true, class: "text-secondary" %></h1>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="rarte-dox col-12">
+    <p class="mt-5"><%= link_to "商品のレビューを書く", new_item_post_comment_path(@item), class: "btn btn-sm btn-outline-secondary" %></p>
+    <%= render "public/items/item_rate", post_comments: @post_comments %>
+  </div>
 </div>
-
-<%= render "public/items/item_rate", post_comments: @post_comments %>
