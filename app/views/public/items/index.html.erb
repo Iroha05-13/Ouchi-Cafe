@@ -1,5 +1,9 @@
 <div class="row">
-  <h2 class="col-12">商品一覧</h2>
+  <h2 class="col-md-2 col-sm-12">商品一覧</h2>
+
+  <div class="col-md-10 mt-2">
+    <%= render "item_tag", tags: @tags %>
+  </div>
 
   <% @items.each do |item| %>
     <%= render "item", item: item %>
