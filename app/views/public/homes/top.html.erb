@@ -1,8 +1,56 @@
-<div class="main-visual row">
-    <div>
-        <% @items.each do |item| %>
-            <%= image_tag item.get_item_image(600,360) %>
+<div class="row">
+    <div class="carousel slide col-md-7" id="top-img" data-ride="carousel">
+        <div class="carousel-inner carousel-fade">
+            <div class="carousel-item active">
+                <%= image_tag "22086464_s.jpg", :size => "640x427" %>
+            </div>
+            <div class="carousel-item">
+                <%= image_tag "3540657_s.jpg", :size => "640x427" %>
+            </div>
+            <div class="carousel-item">
+                <%= image_tag "22496682_s.jpg", :size => "640x427" %>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <h3 class="my-5">ようこそ、おうち＠カフェへ</h3>
+
+    <div class="col-md-5 col-sm-12 my-md-5 my-sm-3">
+        <%= link_to shops_path, class: "text-dark" do %>
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-5 m-2">
+                        <% @shops.each do |shop| %>
+                            <%= image_tag shop.get_shop_image(200,150) %>
+                        <% end %>
+                    </div>
+                    <div class="col-6">
+                        <div class="card-body">
+                            <p class="card-text mt-5 ml-5">お店を探す→</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <% end %>
     </div>
-    <h5>ようこそ、おうち＠カフェへ</h5>
+    <div class="col-md-5 col-sm-12 my-md-5 my-sm-3">
+        <%= link_to items_path, class: "text-dark" do %>
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-5 m-2">
+                        <% @items.each do |item| %>
+                            <%= image_tag item.get_item_image(250,150) %>
+                        <% end %>
+                    </div>
+                    <div class="col-6">
+                        <div class="card-body">
+                            <p class="card-text mt-5 ml-5">ケーキを探す→</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
 </div>

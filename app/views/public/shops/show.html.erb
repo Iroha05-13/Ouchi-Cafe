@@ -10,18 +10,34 @@
       <h5><%= @shop.introduction %></h5>
     </div>
 
-    <div class="text-md-right col-md-4 col-sm-12 mt-md-5">
+    <div class="text-md-right col-md-4 col-sm-12 mt-md-5 mb-3">
       <%= image_tag @shop.get_shop_in_image(320,240) %>
     </div>
 
-    <div>
-      <h5>店舗情報</h5>
-      <%= image_tag @shop.get_shop_image(320,240) %>
-      <div>
-        <%= @shop.name %><br>
-        <p><strong>店舗住所</strong></p>
-        〒<%= @shop.postal_code %><br>
-        <%= @shop.address %>
+    <div class="col-12 my-3">
+      <h3 class="col-12">このお店で売っている商品</h3>
+
+      <div class="row">
+        <% @items.each do |item| %>
+          <%= render "public/items/item", item: item %>
+        <% end %>
+      </div>
+    </div>
+
+    <h5 class="col-12 mt-5">店舗情報</h5>
+    <div class="card my-3">
+      <div class="row no-gutters">
+        <div class="col-5 m-3">
+          <%= image_tag @shop.get_shop_image(240,180) %>
+        </div>
+        <div class="col-6">
+          <div class="card-body">
+            <h6 class="card-title"><%= @shop.name %></h6>
+            <p><strong>店舗住所</strong></p>
+            <p>〒<%= @shop.postal_code %></p>
+            <p><%= @shop.address %></p>
+          </div>
+        </div>
       </div>
     </div>
   <% else %>

@@ -1,6 +1,9 @@
 <div class="card item-box mx-3 mt-4 shadow-md" style="width: 14rem;">
   <div>
     <%= link_to item_path(item.id), class: "text-dark" do %>
+      <% if item.is_active == false %>
+        <p class="item-sold-out text-light text-center">SOLD OUT</p>
+      <% end %>
       <%= image_tag item.get_item_image(200,120), class: "card-img-top"; %>
       <p class="card-body"><%= truncate(item.name, length: 20) %></p>
     <% end %>

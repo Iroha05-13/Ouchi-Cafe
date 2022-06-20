@@ -4,6 +4,8 @@ class Item < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :order_details, dependent: :destroy
+  has_many :tags, through: :item_tags
+  has_many :item_tags, dependent: :destroy
 
   belongs_to :shop
 

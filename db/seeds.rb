@@ -10,3 +10,13 @@ Admin.create!(
     email: "admin.com@mail",
     password: "admin1"
   )
+
+Tag.create([
+    {name: "2000円以下"},
+    {name: "3000円以下"},
+    {name: "4000円以下"},
+    {name: "フルーツたっぷり"},
+    {name: "焼菓子"},
+    {name: "チーズ"},
+    {name: "抹茶"}
+])

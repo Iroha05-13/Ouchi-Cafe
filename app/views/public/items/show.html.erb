@@ -6,6 +6,11 @@
   </div>
 
   <div class="col-md-5 col-sm-12 my-3">
+    <% if @item.is_active == false %>
+      <div class="card-img-overlay">
+        <h1 class="text-light text-center">SOLD OUT</h1>
+      </div>
+    <% end %>
     <%= image_tag @item.get_item_image(500,300) %>
   </div>
 
@@ -21,7 +26,11 @@
         <%= form_with model: @cart_item, url: "/cart_items", method: :post, local: true do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id, class: "form-control" %>
           <%= f.select :amount, *[1..10], {selected: 1}, class: "form-control-sm" %>
-          <%= f.submit "カートに入れる", class: "btn btn-outline-secondary" %>
+          <% if @item.is_active == true %>
+            <%= f.submit "カートに入れる", class: "btn btn-outline-secondary" %>
+          <% else %>
+            <%= f.submit "カートに入れる", class: "btn btn-outline-secondary", disabled: "disabled" %>
+          <% end %>
         <% end %>
       </div>
       <div class="col-1">
