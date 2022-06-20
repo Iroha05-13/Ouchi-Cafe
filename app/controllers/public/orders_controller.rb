@@ -55,7 +55,7 @@ class Public::OrdersController < ApplicationController
         order_detail.save
       end
       redirect_to cart_items_path
-      flash[:notice] = "注文が確定されました。ご注文ありがとうございました！"
+      flash[:notice1] = "注文が確定されました。ご注文ありがとうございました！"
       cart_items.destroy_all
     else
       @order = Order.new(order_params)

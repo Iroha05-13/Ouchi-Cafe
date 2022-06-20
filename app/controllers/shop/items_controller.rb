@@ -20,7 +20,7 @@ class Shop::ItemsController < ApplicationController
     item.shop_id = current_shop.id
     if item.save
       redirect_to item_path(item.id)
-      flash[:notice] = ""
+      flash[:notice1] = "商品が追加されました。"
     else
       render :new
     end
@@ -30,6 +30,7 @@ class Shop::ItemsController < ApplicationController
     item = Item.find(params[:id])
     if item.update(item_params)
       redirect_to item_path(item.id)
+      flash[:notice1] = "商品情報が更新されました。"
     else
       render :edit
     end
