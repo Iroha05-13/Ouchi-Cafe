@@ -1,6 +1,8 @@
 class Shop::ItemsController < ApplicationController
+  before_action :authenticate_shop!
   def new
     @item = Item.new
+    @tags = Tag.all
   end
 
   def index
@@ -10,6 +12,7 @@ class Shop::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @tags = Tag.all
   end
 
   def create
@@ -35,6 +38,6 @@ class Shop::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:item_image, :name, :introduction, :price, :is_active, :shop_id)
+    params.require(:item).permit(:item_image, :name, :introduction, :price, :is_active, :shop_id, tag_ids: [])
   end
 end

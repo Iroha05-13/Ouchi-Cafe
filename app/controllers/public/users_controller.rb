@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
   def show
     @user = current_user
     @orders = @user.orders.order(created_at: :desc).limit(5)

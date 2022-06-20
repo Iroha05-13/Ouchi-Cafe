@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_user!
   def new
     @order = Order.new
     @addresses = current_user.addresses

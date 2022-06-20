@@ -1,4 +1,5 @@
 class Shop::ShopsController < ApplicationController
+  before_action :authenticate_shop!
   def show
     @shop = current_shop
     @items = @shop.items
